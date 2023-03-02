@@ -1,12 +1,7 @@
 const express = require("express");
 const app = express();
-const mime = require('mime');
 
-app.use(express.static("public", {
-  setHeaders: (res, path) => {
-    res.setHeader('Content-Type', mime.getType(path));
-  }
-}));
+app.use(express.static("public"))
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/frontpage/frontpage.html")
