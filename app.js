@@ -1,6 +1,18 @@
 const express = require("express");
 const app = express();
 
+// Set MIME type for CSS files
+app.get("*.css", function(req, res, next) {
+  res.header("Content-Type", "text/css");
+  next();
+});
+
+// Set MIME type for JavaScript files
+app.get("*.js", function(req, res, next) {
+  res.header("Content-Type", "text/javascript");
+  next();
+});
+
 app.use(express.static("public"))
 
 app.get("/", (req, res) => {
